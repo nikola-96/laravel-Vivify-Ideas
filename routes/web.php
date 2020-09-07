@@ -14,3 +14,8 @@
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/hello', function () {
+    $first_name = 'Nikola';
+
+    return view('simple', compact('first_name'));
+});
