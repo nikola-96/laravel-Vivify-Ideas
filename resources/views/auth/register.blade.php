@@ -62,15 +62,13 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="countries" class="col-md-4 col-form-label text-md-right">{{ __('Select country') }}</label>
+                            <label for="country" class="col-md-4 col-form-label text-md-right">{{ __('Select country') }}</label>
 
                             <div class="col-md-6">
-                                <select id="countries" name="countries">
-                                @if(sizeof($countries))
+                                <select id="country" name="country">
                                     @foreach ($countries as $country)
                                         <option>{{ $country['name'] }}</option>
                                     @endforeach
-                                @endif
                                 </select>
                             </div>
                         </div>
