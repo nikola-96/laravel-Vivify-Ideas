@@ -12,12 +12,14 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    $first_name = 'Nikola';
+
+    return view('simple', compact('first_name'));
 });
 
 Route::get('/get', function(){
     return 'get route';
-})->name('get');
+})->name('get')->middleware('age');
 
 Route::post('/post', function($value = 'post route'){
     return $value;
