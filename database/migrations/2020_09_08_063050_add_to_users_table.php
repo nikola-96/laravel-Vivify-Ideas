@@ -29,9 +29,9 @@ class AddToUsersTable extends Migration
     public function down()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->dropColumn('last_name');
-            $table->dropColumn('company');
-            $table->dropColumn('country');
+            $table->dropIfExists('last_name');
+            $table->dropIfExists('company');
+            $table->dropIfExists('country');
         });
     }
 }
