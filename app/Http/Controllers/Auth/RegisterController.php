@@ -8,6 +8,8 @@ use App\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Webpatser\Countries\Countries;
+
 
 class RegisterController extends Controller
 {
@@ -40,7 +42,12 @@ class RegisterController extends Controller
     {
         $this->middleware('guest');
     }
+    public function showRegistrationForm() {
 
+        $countries = (new Countries())->getList();
+
+        return view('auth.register', compact('countries'));
+    }
     /**
      * Get a validator for an incoming registration request.
      *
