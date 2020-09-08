@@ -3,7 +3,7 @@
 namespace App\Http\Middleware;
 
 use Closure;
-
+use Illuminate\Http\Request;
 class CheckAge
 {
     /**
@@ -15,13 +15,12 @@ class CheckAge
      */
     public function handle($request, Closure $next)
     {
-        if($request->age){
+        $age = $request->age;
 
-        if ($request->age < 18){
-            return abort(404, 'Something went wrong');
+        if (!$request->exists('age') || $age < 18){
+            
+            return abort(422, 'Something went wrong');
         }
-        return $next($request);
-    }
         return $next($request);
     }
 }
