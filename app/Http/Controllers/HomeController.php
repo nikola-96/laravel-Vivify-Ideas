@@ -13,8 +13,11 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return 'get route';
-    }
+        $first_name = 'Nikola';
+
+        return view('simple', compact('first_name'));
+
+        }
 
     /**
      * Show the form for creating a new resource.
@@ -32,9 +35,9 @@ class HomeController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store()
     {
-        return 'get route';
+        return 'post route';
     }
 
     /**
@@ -43,9 +46,9 @@ class HomeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show()
     {
-        //
+        return 'get route';
     }
 
     /**
@@ -54,7 +57,7 @@ class HomeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit()
     {
         //
     }
@@ -66,7 +69,7 @@ class HomeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update()
     {
         return 'put route';
     }
