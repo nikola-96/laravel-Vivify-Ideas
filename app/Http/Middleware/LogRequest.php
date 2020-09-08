@@ -15,7 +15,7 @@ class LogRequest
      */
     public function handle($request, Closure $next)
     {
-        echo($request->url());
+        Log::info($request);
 
         return $next($request);
     }

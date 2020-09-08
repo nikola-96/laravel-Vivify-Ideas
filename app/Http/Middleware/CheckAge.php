@@ -15,9 +15,13 @@ class CheckAge
      */
     public function handle($request, Closure $next)
     {
+        if($request->age){
+
         if ($request->age < 18){
             return abort(404, 'Something went wrong');
         }
+        return $next($request);
+    }
         return $next($request);
     }
 }
