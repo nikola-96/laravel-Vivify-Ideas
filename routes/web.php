@@ -36,3 +36,4 @@ Route::patch('/patch', function($value = 'patch route'){
 Route::delete('/delete', function ($value='delete route') {
     return $value;
 })->name('delete');
+

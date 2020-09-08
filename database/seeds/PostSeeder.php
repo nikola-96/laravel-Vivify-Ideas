@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
-
+use App\User;
 class PostSeeder extends Seeder
 {
     /**
@@ -11,8 +11,8 @@ class PostSeeder extends Seeder
      */
     public function run()
     {
-        App\User::all()->each(function (App\User $user){
-            $user->posts()->saveMany(factory(App\Post::class, 5)->make());
+        User::all()->each(function (App\User $user){
+            $user->posts()->saveMany(factory(Post::class, 5)->make());
         });
     }
 }
