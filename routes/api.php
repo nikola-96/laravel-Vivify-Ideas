@@ -30,3 +30,6 @@ Route::group([
     Route::post('me', 'AuthController@me');
 
 });
+
+Route::middleware('api')->get('/open', 'DataController@open');
+Route::middleware(['api', 'jwt'])->get('/closed', 'DataController@closed');
