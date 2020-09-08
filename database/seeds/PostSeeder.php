@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use App\User;
+use App\Post;
 class PostSeeder extends Seeder
 {
     /**
@@ -11,7 +12,7 @@ class PostSeeder extends Seeder
      */
     public function run()
     {
-        User::all()->each(function (App\User $user){
+        User::all()->each(function (User $user){
             $user->posts()->saveMany(factory(Post::class, 5)->make());
         });
     }
