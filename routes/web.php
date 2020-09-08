@@ -19,7 +19,7 @@ Route::get('/', function () {
 
 Route::get('/get', function(){
     return 'get route';
-})->name('get');
+})->name('get')->middleware('age');
 
 Route::post('/post', function($value = 'post route'){
     return $value;
