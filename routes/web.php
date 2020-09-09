@@ -17,3 +17,4 @@ Route::post('/post', 'HomeController@store')->name('post');
 Route::put('/put', 'HomeController@update')->name('put');
 Route::patch('/patch', 'HomeController@update_patch')->name('patch');
 Route::delete('/delete', 'HomeController@destroy')->name('delete');
+Route::get('/error', 'ErrorController@index');

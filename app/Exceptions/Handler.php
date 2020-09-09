@@ -4,6 +4,7 @@ namespace App\Exceptions;
 
 use Exception;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use App\Exceptions\CustomException;
 
 class Handler extends ExceptionHandler
 {
@@ -50,6 +51,9 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $exception)
     {
-        return parent::render($request, $exception);
-    }
+        if ($exception instanceof CustomException) {
+            return response()->json(['foo' => 'bar']);;
+        }
+    
+        return parent::render($request, $exception);    }
 }
