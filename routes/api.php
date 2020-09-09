@@ -33,4 +33,5 @@ Route::group([
 
 Route::middleware('api')->get('/open', 'DataController@open');
 Route::middleware(['api', 'jwtValidation'])->get('/closed', 'DataController@closed');
-Route::middleware(['api','jwt' ])->get('/auth/invalidate', 'AuthController@invalidateToken');
+Route::middleware(['api','jwt' ])->get('/auth/invalidate/forever', 'AuthController@invalidateTokenForever');
+Route::middleware(['api','jwt' ])->get('/auth/invalidate/temporary', 'AuthController@invalidateTokenTemporary');
