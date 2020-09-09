@@ -17,14 +17,14 @@ class CheckTokenValidationTemporary
      */
     public function handle($request, Closure $next)
     {
-        $value = Cache::get('token');
-        $token = auth()->payload();
+        if(Cache::has('token')){
+            $value = Cache::get('token');
+            $token = auth()->payload();
+                if($value === $token['jti'] ){
 
-        if($value === $token['jti'] ){
-
-            return abort(401, 'Unauthorized');
+                    return abort(401, 'Unauthorized');
+                }
         }
-        
-        return $next($request);
-    }
+            return $next($request);
+        }
 }

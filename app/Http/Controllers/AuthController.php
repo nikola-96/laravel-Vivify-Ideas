@@ -98,7 +98,5 @@ class AuthController extends Controller
         $token = auth()->payload();
         Cache::put('token', $token['jti'], 800);
         
-        return $value;
-
     }
 }
