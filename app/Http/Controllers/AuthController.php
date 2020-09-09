@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Tymon\JWTAuth\Exceptions\JWTException;
 use Tymon\JWTAuth\Facades\JWTAuth;
-
+use App\BlacklistToken;
 
 class AuthController extends Controller
 {
@@ -84,5 +84,12 @@ class AuthController extends Controller
             'token_type' => 'bearer',
             'expires_in' => auth()->factory()->getTTL() * 60
         ]);
+    }
+    public function invalidateToken(Request $request)
+    {
+        $token = $request->bearerToken();
+        BlacklistToken::create(['token' => $token]);
+
+        return $token; 
     }
 }
