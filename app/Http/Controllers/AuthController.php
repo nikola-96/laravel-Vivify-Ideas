@@ -88,18 +88,15 @@ class AuthController extends Controller
     }
     public function invalidateTokenForever(Request $request)
     {
-        $token = $request->bearerToken();
-        BlacklistToken::create(['token' => $token]);
+        $token = auth()->payload();
+        BlacklistToken::create(['token' => $token['jti']]);
 
-        return $token; 
     }
     public function invalidateTokenTemporary(Request $request)
     {
         $token = $request->bearerToken();
 
-        Cache::store('array')->put('tokens', $token , 600);
-
-        return Cache::store('array')->get('tokens');
+        Cache::store('array')->put('tokens', $token , 800);
 
     }
 }

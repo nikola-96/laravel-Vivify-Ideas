@@ -18,9 +18,9 @@ class CheckTokenValidation
     public function handle($request, Closure $next)
     {
         $tokens = BlacklistToken::all();
-        $tokenUser = $request->bearerToken();
+        $tokenUser = auth()->payload();
             foreach($tokens as $token){
-                if ($tokenUser ===  $token){
+                if ($tokenUser['jti'] ===  $token->token){
                     return abort(401, 'Unauthorized');
                 }
             }

@@ -65,7 +65,8 @@ class Kernel extends HttpKernel
         'age'=> \App\Http\Middleware\CheckAge::class,
         'auth' => \App\Http\Middleware\Authenticate::class,
         'jwt' => \Tymon\JWTAuth\Http\Middleware\Authenticate::class,
-        'jwtValidation' => \App\Http\Middleware\CheckTokenValidation::class
+        'jwtValidation' => \App\Http\Middleware\CheckTokenValidation::class,
+        'jwtValidationTemporary' => \App\Http\Middleware\CheckTokenValidationTemporary::class,
     ];
 
     /**
