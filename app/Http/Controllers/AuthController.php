@@ -94,9 +94,11 @@ class AuthController extends Controller
     }
     public function invalidateTokenTemporary(Request $request)
     {
-        $token = $request->bearerToken();
 
-        Cache::store('array')->put('tokens', $token , 800);
+        $token = auth()->payload();
+        Cache::put('token', $token['jti'], 800);
+        
+        return $value;
 
     }
 }
