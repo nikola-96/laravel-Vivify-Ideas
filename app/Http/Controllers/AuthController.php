@@ -3,6 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Tymon\JWTAuth\Exceptions\JWTException;
+use Tymon\JWTAuth\Facades\JWTAuth;
+
 
 class AuthController extends Controller
 {
@@ -39,7 +44,7 @@ class AuthController extends Controller
      */
     public function me()
     {
-        return response()->json(auth()->user());
+        return response()->json(auth()->user());        
     }
 
     /**
@@ -49,9 +54,10 @@ class AuthController extends Controller
      */
     public function logout()
     {
-        auth()->logout();
+         $token = auth()->logout();
 
-        return response()->json(['message' => 'Successfully logged out']);
+        // return response()->json(['message' => 'Successfully logged out']);
+        return $token;
     }
 
     /**
