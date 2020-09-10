@@ -14,6 +14,8 @@ class PostController extends Controller
      */
     public function index()
     {
+        $this->authorize('viewAny', Post::class);
+
         return Post::all();
     }
 
@@ -24,7 +26,7 @@ class PostController extends Controller
      */
     public function create()
     {
-        //
+
     }
 
     /**
@@ -35,7 +37,10 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->authorize('create', Post::class);
+        $post = Post::create(array_merge($request->all(),['user_id' => auth()->user()->id]));
+
+        return $post;
     }
 
     /**
@@ -69,7 +74,11 @@ class PostController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $post = Post::find($id);
+        $this->authorize('update', $post);
+        $post->title = $request->input('title');
+        $post->content = $request->input('content');
+        $post->save();
     }
 
     /**
@@ -81,6 +90,7 @@ class PostController extends Controller
     public function destroy($id)
     {
         $post = Post::findOrFail($id);
+        $this->authorize('delete', $post);
 
         $post->delete();
     }
