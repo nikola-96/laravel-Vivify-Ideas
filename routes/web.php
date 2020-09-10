@@ -18,3 +18,7 @@ Route::put('/put', 'HomeController@update')->name('put');
 Route::patch('/patch', 'HomeController@update_patch')->name('patch');
 Route::delete('/delete', 'HomeController@destroy')->name('delete');
 Route::get('/error', 'ErrorController@index');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
