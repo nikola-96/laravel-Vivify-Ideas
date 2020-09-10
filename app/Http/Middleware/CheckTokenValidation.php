@@ -17,12 +17,10 @@ class CheckTokenValidation
      */
     public function handle($request, Closure $next)
     {
-        $tokens = BlacklistToken::all();
         $tokenUser = auth()->payload();
-            foreach($tokens as $token){
-                if ($tokenUser['jti'] ===  $token->token){
-                    return abort(401, 'Unauthorized');
-                }
+        $token = BlacklistToken::where('token', $tokenUser['jti'])->first();
+        if($token) { 
+            return abort(401, 'Unauthorized');
             }
             return $next($request);        
     }

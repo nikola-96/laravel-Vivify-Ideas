@@ -32,7 +32,7 @@ Route::group([
 });
 
 Route::middleware('api')->get('/open', 'DataController@open');
-Route::middleware(['api','jwt', 'jwtValidationTemporary'])->get('/closed', 'DataController@closed');
+Route::middleware(['api','jwt', 'jwtValidationForever'])->get('/closed', 'DataController@closed');
 Route::middleware(['api','jwt' ])->get('/auth/invalidate/forever', 'AuthController@invalidateTokenForever');
 Route::middleware(['api','jwt' ])->get('/auth/invalidate/temporary', 'AuthController@invalidateTokenTemporary');
 Route::resource('post', 'PostController');
