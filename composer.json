@@ -13,6 +13,7 @@
         "fideloper/proxy": "^4.0",
         "laravel/framework": "^6.18.35",
         "laravel/tinker": "^2.0",
+        "tymon/jwt-auth": "dev-develop",
         "webpatser/laravel-countries": "dev-master"
     },
     "require-dev": {

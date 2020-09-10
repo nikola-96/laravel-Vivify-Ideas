@@ -63,6 +63,10 @@ class Kernel extends HttpKernel
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         'age'=> \App\Http\Middleware\CheckAge::class,
+        'auth' => \App\Http\Middleware\Authenticate::class,
+        'jwt' => \Tymon\JWTAuth\Http\Middleware\Authenticate::class,
+        'jwtValidationForever' => \App\Http\Middleware\CheckTokenValidation::class,
+        'jwtValidationTemporary' => \App\Http\Middleware\CheckTokenValidationTemporary::class,
     ];
 
     /**
