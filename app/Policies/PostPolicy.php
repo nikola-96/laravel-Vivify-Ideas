@@ -41,10 +41,7 @@ class PostPolicy
      */
     public function create(User $user)
     {       
-        if ($user->email === 'nikola.markovic@vivifyideas.com') { //email only example for test
-            return true;
-        }
-        return false;
+        return $user->email === 'nikola.markovic@vivifyideas.com';
     }
 
     /**
