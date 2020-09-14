@@ -4,6 +4,7 @@ namespace App\Exceptions;
 
 use Exception;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use App\Exceptions\CustomException;
 
 class Handler extends ExceptionHandler
 {
@@ -13,8 +14,8 @@ class Handler extends ExceptionHandler
      * @var array
      */
     protected $dontReport = [
-        //
-    ];
+        Symfony\Component\HttpKernel\Exception\NotFoundHttpException::class,
+        ];
 
     /**
      * A list of the inputs that are never flashed for validation exceptions.
@@ -50,6 +51,6 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $exception)
     {
-        return parent::render($request, $exception);
-    }
+        return parent::render($request, $exception); 
+       }
 }
